@@ -2,9 +2,11 @@ package main
 
 import (
 	"github.com/jinzhu/gorm"
+	"fmt"
+	"os"
 )
 
-func gormConnect() *gorm.DB {
+func gormConnect() (*gorm.DB, error) {
 	DBMS := "mysql"
 	USER := "test"
 	PASS := "12345678"
@@ -13,17 +15,17 @@ func gormConnect() *gorm.DB {
 	CONNECT := USER + ":" + PASS + "@/" + DBNAME + "?parseTime=true"
 	db, err := gorm.Open(DBMS, CONNECT)
 
-	if err != nil {
-		panic(err.Error())
-	}
-	return db
+	return db, err
 }
 
 func dbInit() {
-	db := gormConnect()
+	db, err := gormConnect()
 
+	if err != nil {
+		fmt.Println("Error:", err)
+		os.Exit(1)
+	}
 	// コネクション解放
 	defer db.Close() // defer: 関数が終わった時に必ず実行する
 	db.AutoMigrate(&User{}) //構造体に基づいてテーブルを作成
 }
-
