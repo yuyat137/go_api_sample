@@ -50,11 +50,6 @@ func setupRouter() *gin.Engine {
 
 	dbInit()
 
-	router.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
 	router.GET("/users", func(c *gin.Context) {
 			users := getAllUser()
 			c.JSON(200, gin.H{"users": users})
