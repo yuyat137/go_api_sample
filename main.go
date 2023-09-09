@@ -10,10 +10,7 @@ func setupRouter() *gin.Engine {
 
 	dbInit()
 
-	router.GET("/users", func(c *gin.Context) {
-			users := getAllUser()
-			c.JSON(200, gin.H{"users": users})
-	})
+	router.GET("/users", getAllUserHandler)
 
 	return router
 }
