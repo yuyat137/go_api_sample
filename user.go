@@ -27,9 +27,9 @@ func getUser(id int) User {
 
   handleError(err)
 
+  defer db.Close()
   var user User
   db.First(&user, id)
-  defer db.Close()
   return user
 }
 
