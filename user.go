@@ -26,3 +26,8 @@ func getAllUser() []User {
   db.Order("created_at desc").Find(&users)
   return users
 }
+
+func postUser(name string) {
+  user := User{Name: name}
+  dbInsert(&user)
+}

@@ -11,6 +11,7 @@ func setupRouter() *gin.Engine {
   dbInit()
 
   router.GET("/users", getAllUserHandler)
+  router.POST("/users", postUserHandler)
 
   return router
 }

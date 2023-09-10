@@ -10,4 +10,5 @@
   + https://gin-gonic.com/ja/docs/quickstart/
 * DBとの接続においてお世話になったドキュメント
   + https://qiita.com/dai-maru/items/7e97fc6623375c7eb14a
-
+* POST APIで参考になったドキュメント
+  + https://nansystem.com/gin-get-post-json-form/
