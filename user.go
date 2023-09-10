@@ -1,9 +1,10 @@
 package main
 
 import (
-  "github.com/jinzhu/gorm"
-  "fmt"
-  "os"
+	"fmt"
+	"os"
+
+	"github.com/jinzhu/gorm"
 )
 
 // Userモデル宣言
@@ -25,4 +26,18 @@ func getAllUser() []User {
   var users []User
   db.Order("created_at desc").Find(&users)
   return users
+}
+
+func getUser(id int) User {
+  db, err := gormConnect()
+
+  if err != nil {
+    fmt.Println("Error:", err)
+    os.Exit(1)
+  }
+
+  var user User
+  db.First(&user, id)
+  defer db.Close()
+  return user
 }
