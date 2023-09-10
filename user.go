@@ -2,8 +2,6 @@ package main
 
 import (
   "github.com/jinzhu/gorm"
-  "fmt"
-  "os"
 )
 
 // Userモデル宣言
@@ -16,10 +14,7 @@ type User struct {
 func getAllUser() []User {
   db, err := gormConnect()
 
-  if err != nil {
-    fmt.Println("Error:", err)
-    os.Exit(1)
-  }
+  handleError(err)
 
   defer db.Close()
   var users []User
