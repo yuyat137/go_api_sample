@@ -36,3 +36,14 @@ func createUser(name string, password string) {
   }
   dbInsert(&user)
 }
+
+func getUser(id int) User {
+  db, err := gormConnect()
+
+  handleError(err)
+
+  defer db.Close()
+  var user User
+  db.First(&user, id)
+  return user
+}
