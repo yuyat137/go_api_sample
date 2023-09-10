@@ -10,6 +10,7 @@ func getAllUserHandler(c *gin.Context) {
 
 func postUserHandler(c *gin.Context) {
   name := c.PostForm("name")
-  createUser(name)
+  password := c.PostForm("password")
+  createUser(name, password)
   c.JSON(204, nil)
 }
