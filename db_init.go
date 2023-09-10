@@ -2,6 +2,8 @@ package main
 
 import (
   "github.com/jinzhu/gorm"
+  "fmt"
+  "os"
 )
 
 func gormConnect() (*gorm.DB, error) {
@@ -18,7 +20,11 @@ func gormConnect() (*gorm.DB, error) {
 
 func dbInit() {
   db, err := gormConnect()
-  handleError(err)
+
+  if err != nil {
+    fmt.Println("Error:", err)
+    os.Exit(1)
+  }
   // コネクション解放
   defer db.Close() // defer: 関数が終わった時に必ず実行する
   db.AutoMigrate(&User{}) //構造体に基づいてテーブルを作成
@@ -26,7 +32,10 @@ func dbInit() {
 
 func dbInsert(record interface{}) {
   db, err := gormConnect()
-  handleError(err)
+  if err != nil {
+    fmt.Println("Error:", err)
+    os.Exit(1)
+  }
 
   defer db.Close()
   db.Create(record)
