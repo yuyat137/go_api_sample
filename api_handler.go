@@ -1,7 +1,8 @@
 package main
 
 import (
-	"github.com/gin-gonic/gin"
+  "github.com/gin-gonic/gin"
+  "strconv"
 )
 
 func getAllUserHandler(c *gin.Context) {
@@ -9,7 +10,8 @@ func getAllUserHandler(c *gin.Context) {
 }
 
 func getUserHandler(c *gin.Context) {
-	var id := c.Param("id")
+  id_string := c.Param("id")
+  id, _ := strconv.Atoi(id_string)
   c.JSON(200, gin.H{ "user": getUser(id) })
 }
 
