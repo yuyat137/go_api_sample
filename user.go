@@ -1,10 +1,9 @@
 package main
 
 import (
-	"fmt"
-	"os"
-
-	"github.com/jinzhu/gorm"
+  "github.com/jinzhu/gorm"
+  "fmt"
+  "os"
 )
 
 // Userモデル宣言
