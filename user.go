@@ -41,3 +41,8 @@ func getUser(id int) User {
   defer db.Close()
   return user
 }
+
+func createUser(name string) {
+  user := User{Name: name}
+  dbInsert(&user)
+}

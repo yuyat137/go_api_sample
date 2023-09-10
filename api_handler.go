@@ -12,3 +12,9 @@ func getUserHandler(c *gin.Context) {
 	var id := c.Param("id")
   c.JSON(200, gin.H{ "user": getUser(id) })
 }
+
+func postUserHandler(c *gin.Context) {
+  name := c.PostForm("name")
+  createUser(name)
+  c.JSON(204, nil)
+}

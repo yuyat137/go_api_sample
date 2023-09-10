@@ -1,8 +1,8 @@
 package main
 
 import (
-  "github.com/gin-gonic/gin"
-  _ "github.com/go-sql-driver/mysql" //本コードでmysqlを使う記述が無いが、インポートしたいものに対しては"_"を頭につける決まり。
+	"github.com/gin-gonic/gin"
+	_ "github.com/go-sql-driver/mysql" //本コードでmysqlを使う記述が無いが、インポートしたいものに対しては"_"を頭につける決まり。
 )
 
 func setupRouter() *gin.Engine {
@@ -12,6 +12,7 @@ func setupRouter() *gin.Engine {
 
   router.GET("/users", getAllUserHandler)
   router.GET("/users/:id", getUserHandler)
+  router.POST("/users", postUserHandler)
 
   return router
 }
