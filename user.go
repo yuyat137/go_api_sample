@@ -25,10 +25,7 @@ func getAllUser() []User {
 func getUser(id int) User {
   db, err := gormConnect()
 
-  if err != nil {
-    fmt.Println("Error:", err)
-    os.Exit(1)
-  }
+  handleError(err)
 
   var user User
   db.First(&user, id)
