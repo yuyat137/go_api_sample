@@ -29,3 +29,15 @@ func dbInit() {
   defer db.Close() // defer: 関数が終わった時に必ず実行する
   db.AutoMigrate(&User{}) //構造体に基づいてテーブルを作成
 }
+
+func dbInsert(record interface{}) {
+  db, err := gormConnect()
+  if err != nil {
+    fmt.Println("Error:", err)
+    os.Exit(1)
+  }
+
+  defer db.Close()
+  db.Create(record)
+}
+
