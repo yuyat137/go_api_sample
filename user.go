@@ -27,7 +27,7 @@ func getAllUser() []User {
   return users
 }
 
-func postUser(name string) {
+func createUser(name string) {
   user := User{Name: name}
   dbInsert(&user)
 }
