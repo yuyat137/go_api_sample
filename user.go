@@ -22,6 +22,17 @@ func getAllUser() []User {
   return users
 }
 
+func getUser(id int) User {
+  db, err := gormConnect()
+
+  handleError(err)
+
+  defer db.Close()
+  var user User
+  db.First(&user, id)
+  return user
+}
+
 func createUser(name string) {
   user := User{Name: name}
   dbInsert(&user)
